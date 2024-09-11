@@ -1,5 +1,6 @@
+import { interpolate } from "remotion";
 import sun from "./sun.png";
-import { Img, interpolate, useCurrentFrame } from "remotion";
+import { Img, useCurrentFrame } from "remotion";
 
 type Props = { top: string; left: string };
 

@@ -8,7 +8,7 @@ export const BarbadosComposition = () => {
   return (
     <AbsoluteFill
       style={{
-        backgroundColor: "darkblue",
+        backgroundColor: "#4A6473",
       }}
     >
       <BackgroundImage src={barbados} />
