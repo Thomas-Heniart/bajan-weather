@@ -43,7 +43,7 @@ export const RemotionRoot: React.FC = () => {
         }}
       />
       <Composition
-        id="BarbadosComposition"
+        id="Barbados"
         component={BarbadosComposition}
         durationInFrames={30 * 8}
         fps={30}
