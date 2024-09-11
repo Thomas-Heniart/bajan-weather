@@ -10,6 +10,7 @@
     "react": "^18.0.0",
     "react-dom": "^18.0.0",
     "remotion": "4.0.210",
+    "styled-components": "^6.1.13",
     "zod": "3.22.3"
   },
   "devDependencies": {
@@ -17,6 +18,9 @@
     "@types/react": "^18.0.26",
     "@types/web": "^0.0.143",
     "eslint": "^8.43.0",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-import-resolver-typescript": "^3.6.3",
+    "eslint-plugin-prettier": "^5.2.1",
     "prettier": "^3.2.5",
     "typescript": "^5.4.5"
   },
