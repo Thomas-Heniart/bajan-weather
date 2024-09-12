@@ -9,6 +9,7 @@ import { Arc } from "./Arc";
 import { Atom } from "./Atom";
 import { z } from "zod";
 import { zColor } from "@remotion/zod-types";
+import React from "react";
 
 export const myCompSchema2 = z.object({
   logoColor1: zColor(),

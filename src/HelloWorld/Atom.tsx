@@ -1,4 +1,4 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import { random, useVideoConfig } from "remotion";
 
 export const Atom: React.FC<{

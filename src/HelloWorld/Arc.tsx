@@ -1,4 +1,4 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import { random, useVideoConfig } from "remotion";
 
 const getCircumferenceOfArc = (rx: number, ry: number) => {

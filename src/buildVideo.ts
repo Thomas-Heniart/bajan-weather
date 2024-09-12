@@ -1,8 +1,8 @@
 import { bundle } from "@remotion/bundler";
 import { renderMedia, selectComposition } from "@remotion/renderer";
-import path from "path";
+import * as path from "path";
 
-const main = async () => {
+export const buildVideo = async () => {
   // The composition you want to render
   const compositionId = "Barbados";
 
@@ -37,12 +37,3 @@ const main = async () => {
     inputProps,
   });
 };
-
-main()
-  .then(() => {
-    console.log("Render done!");
-  })
-  .catch((e) => {
-    console.error("An error occurred", e);
-    process.exit(1);
-  });

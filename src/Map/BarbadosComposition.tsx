@@ -3,6 +3,7 @@ import { AbsoluteFill, Img, Sequence } from "remotion";
 import barbados from "./barbados.svg";
 import { Sun } from "./Sun";
 import { centers } from "./centers";
+import React from "react";
 
 export const BarbadosComposition = () => {
   return (

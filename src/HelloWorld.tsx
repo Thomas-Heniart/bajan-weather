@@ -11,6 +11,7 @@ import { Subtitle } from "./HelloWorld/Subtitle";
 import { Title } from "./HelloWorld/Title";
 import { z } from "zod";
 import { zColor } from "@remotion/zod-types";
+import React from "react";
 
 export const myCompSchema = z.object({
   titleText: z.string(),
