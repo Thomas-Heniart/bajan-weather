@@ -1,5 +1,7 @@
+import { BarbadosParish } from "../../shared-context/business-logic/models/barbadosParishes";
+
 type Center = {
-  name: string;
+  name: BarbadosParish;
   left: string;
   top: string;
 };

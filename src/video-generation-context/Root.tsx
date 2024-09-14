@@ -1,7 +1,7 @@
 import { Composition } from "remotion";
 import { HelloWorld, myCompSchema } from "./HelloWorld";
 import { Logo, myCompSchema2 } from "./HelloWorld/Logo";
-import { BarbadosComposition } from "./Map/BarbadosComposition";
+import { BarbadosComposition } from "./BarbadosWeatherMap/BarbadosComposition";
 import React from "react";
 
 // Each <Composition> is an entry in the sidebar!

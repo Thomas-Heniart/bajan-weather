@@ -1,7 +1,9 @@
 import { Module, OnModuleInit } from "@nestjs/common";
+import { WeatherModule } from "./weather-context/adapters/primaries/nest/weatherModule";
+import { ScheduleModule } from "@nestjs/schedule";
 
 @Module({
-  imports: [],
+  imports: [ScheduleModule.forRoot(), WeatherModule],
   controllers: [],
   providers: [],
 })
