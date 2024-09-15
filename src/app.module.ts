@@ -1,21 +1,11 @@
-import { Module, OnModuleInit } from "@nestjs/common";
+import { Module } from "@nestjs/common";
 import { WeatherModule } from "./weather-context/adapters/primaries/nest/weatherModule";
 import { ScheduleModule } from "@nestjs/schedule";
+import { ConfigModule } from "@nestjs/config";
 
 @Module({
-  imports: [ScheduleModule.forRoot(), WeatherModule],
+  imports: [ConfigModule.forRoot(), ScheduleModule.forRoot(), WeatherModule],
   controllers: [],
   providers: [],
 })
-export class AppModule implements OnModuleInit {
-  async onModuleInit(): Promise<void> {
-    // buildVideo()
-    //   .then(() => {
-    //     console.log("Render done!");
-    //   })
-    //   .catch((e) => {
-    //     console.error("An error occurred", e);
-    //     process.exit(1);
-    //   });
-  }
-}
+export class AppModule {}

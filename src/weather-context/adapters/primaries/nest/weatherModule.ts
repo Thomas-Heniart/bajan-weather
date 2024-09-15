@@ -1,8 +1,9 @@
 import { Module } from "@nestjs/common";
 import { InMemoryDailyWeatherRepository } from "../../secondaries/inMemoryDailyWeatherRepository";
-import { FakeWeatherGateway } from "../../secondaries/fakeWeatherGateway";
 import { CollectBarbadosParishDailyWeatherUseCase } from "../../../business-logic/use-cases/save-barbados-parish-daily-weather/collectBarbadosParishDailyWeatherUseCase";
 import { WeatherTasksService } from "./weatherTasksService";
+import { OpenWeatherApiWeatherGateway } from "../../secondaries/open-weather-api/openWeatherApiWeatherGateway";
+import * as process from "node:process";
 
 @Module({
   providers: [
@@ -12,7 +13,8 @@ import { WeatherTasksService } from "./weatherTasksService";
     },
     {
       provide: "WeatherGateway",
-      useFactory: () => new FakeWeatherGateway(),
+      useFactory: () =>
+        new OpenWeatherApiWeatherGateway(process.env.OPEN_WEATHER_API_KEY!),
     },
     {
       provide: CollectBarbadosParishDailyWeatherUseCase,
