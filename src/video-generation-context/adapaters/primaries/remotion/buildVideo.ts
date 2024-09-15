@@ -9,7 +9,9 @@ export const buildVideo = async () => {
   // You only have to create a bundle once, and you may reuse it
   // for multiple renders that you can parametrize using input props.
   const bundleLocation = await bundle({
-    entryPoint: path.resolve("./src/studio.ts"),
+    entryPoint: path.resolve(
+      "./src/video-generation-context/adapaters/primaries/remotion/studio.ts",
+    ),
     // If you have a webpack override in remotion.config.ts, pass it here as well.
     webpackOverride: (config) => config,
   });

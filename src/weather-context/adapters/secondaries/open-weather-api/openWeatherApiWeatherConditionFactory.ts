@@ -12,12 +12,12 @@ export const weatherConditionMapping: Record<number, WeatherCondition> = {
   503: "HEAVER_RAIN",
   504: "EXTREME_RAIN",
   511: "SNOW",
-  520: "SHOW_RAIN",
-  521: "SHOW_RAIN",
-  531: "SHOW_RAIN",
+  520: "RAIN_SHOWER",
+  521: "RAIN_SHOWER",
+  531: "RAIN_SHOWER",
 };
 
-export const weatherConditionFactory = (
+export const openWeatherApiWeatherConditionFactory = (
   openWeatherApiConditionId: number,
 ): WeatherCondition => {
   if (weatherConditionMapping[openWeatherApiConditionId])

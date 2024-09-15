@@ -12,7 +12,7 @@ export const weatherConditions = [
   "INTENSE_RAIN",
   "HEAVER_RAIN",
   "EXTREME_RAIN",
-  "SHOW_RAIN",
+  "RAIN_SHOWER",
   "DRIZZLE",
   "THUNDERSTORM",
 ] as const;

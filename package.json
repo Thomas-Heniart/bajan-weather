@@ -43,7 +43,7 @@
     "start": "nest start",
     "start:dev": "nest start --watch",
     "build": "nest build",
-    "studio:start": "remotion studio src/video-generation-context/studio.ts",
+    "studio:start": "remotion studio src/video-generation-context/adapaters/primaries/remotion/studio.ts",
     "studio:build": "remotion render HelloWorld out/video.mp4",
     "studio:upgrade": "remotion upgrade",
     "test": "jest"
