@@ -2,6 +2,7 @@ import { WeatherGateway } from "../../../business-logic/ports/weatherGateway";
 import { DailyWeather } from "../../../business-logic/models/dailyWeather";
 import axios, { AxiosResponse } from "axios";
 import { openWeatherApiWeatherConditionFactory } from "./openWeatherApiWeatherConditionFactory";
+import * as console from "node:console";
 
 export class OpenWeatherApiWeatherGateway implements WeatherGateway {
   constructor(private readonly appId: string) {}
@@ -39,7 +40,7 @@ export class OpenWeatherApiWeatherGateway implements WeatherGateway {
         params: {
           lat: latitude,
           lon: longitude,
-          dt: date.valueOf() / 1000,
+          dt: Math.trunc(date.valueOf() / 1000),
           appid: this.appId,
           units: "metric",
         },

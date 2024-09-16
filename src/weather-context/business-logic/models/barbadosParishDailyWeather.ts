@@ -1,4 +1,4 @@
-import { BarbadosParish } from "../../../shared-context/business-logic/models/barbadosParishes";
+import { BarbadosParish } from "../../../shared-kernel/business-logic/models/barbadosParishes";
 import { WeatherCondition } from "./weather";
 
 export class BarbadosParishDailyWeather {

@@ -1,4 +1,4 @@
-import { BarbadosParish } from "../../../../shared-context/business-logic/models/barbadosParishes";
+import { BarbadosParish } from "../../../../shared-kernel/business-logic/models/barbadosParishes";
 import { DailyWeatherRepository } from "../../ports/dailyWeatherRepository";
 import { WeatherGateway } from "../../ports/weatherGateway";
 import { parishesCenters } from "../../models/barbados";

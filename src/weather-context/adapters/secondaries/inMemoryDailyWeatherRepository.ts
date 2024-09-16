@@ -12,4 +12,10 @@ export class InMemoryDailyWeatherRepository implements DailyWeatherRepository {
   snapshots() {
     return Object.values(this.dailyWeathers).map((dw) => dw.toSnapshot());
   }
+
+  findAllByDate(date: Date): BarbadosParishDailyWeather[] {
+    return Object.values(this.dailyWeathers).filter(
+      (dw) => dw.toSnapshot().date.valueOf() === date.valueOf(),
+    );
+  }
 }
