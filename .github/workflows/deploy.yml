@@ -33,5 +33,11 @@ jobs:
       - name: Export GitHub PAT
         run: echo "DEPLOY_PAT=${{ secrets.DEPLOY_PAT }}" >> $GITHUB_ENV
 
-      - name: Terraform
-        run: mkdir secrets && echo ${{ secrets.GCP_KEY }} > ./secrets/credentials.json && TF_VAR_GCP_PROJECT_ID=${{ secrets.GCP_PROJECT_ID }} TF_VAR_DEPLOY_PAT=${{ secrets.DEPLOY_PAT }} terraform init && terraform plan && terraform apply -auto-approve
+      - name: Terraform init
+        run: mkdir secrets && echo ${{ secrets.GCP_KEY }} > ./secrets/credentials.json && TF_VAR_GCP_PROJECT_ID=${{ secrets.GCP_PROJECT_ID }} TF_VAR_DEPLOY_PAT=${{ secrets.DEPLOY_PAT }} terraform init
+
+      - name: Terraform plan
+        run: echo ${{ secrets.GCP_KEY }} > ./secrets/credentials.json && TF_VAR_GCP_PROJECT_ID=${{ secrets.GCP_PROJECT_ID }} TF_VAR_DEPLOY_PAT=${{ secrets.DEPLOY_PAT }} terraform plan
+
+      - name: Terraform apply
+        run: echo ${{ secrets.GCP_KEY }} > ./secrets/credentials.json && TF_VAR_GCP_PROJECT_ID=${{ secrets.GCP_PROJECT_ID }} TF_VAR_DEPLOY_PAT=${{ secrets.DEPLOY_PAT }} terraform apply -auto-approve
