@@ -1,0 +1,10 @@
+services:
+  daily-weather:
+    container_name: daily-weather
+    env_file:
+      - .env
+    build:
+        context: .
+        dockerfile: Dockerfile
+    ports:
+      - "3000:3000"
