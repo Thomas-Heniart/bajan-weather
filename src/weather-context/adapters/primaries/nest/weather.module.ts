@@ -33,6 +33,6 @@ export class WeatherModule implements OnModuleInit {
   constructor(private readonly cronTasks: WeatherTasksService) {}
 
   async onModuleInit(): Promise<void> {
-    await this.cronTasks.collectBarbadosDailyWeather();
+    // await this.cronTasks.collectBarbadosDailyWeather();
   }
 }

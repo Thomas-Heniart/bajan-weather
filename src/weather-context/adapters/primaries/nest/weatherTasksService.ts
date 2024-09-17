@@ -24,7 +24,7 @@ export class WeatherTasksService {
     private readonly idProvider: IdProvider,
   ) {}
 
-  @Cron("0 5 * * * *")
+  @Cron("0 5 * * * ")
   async collectBarbadosDailyWeather() {
     const date = new Date();
     for (const parish of barbadosParishes) {
