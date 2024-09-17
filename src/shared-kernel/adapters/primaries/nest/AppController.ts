@@ -5,6 +5,11 @@ import * as process from "node:process";
 
 @Controller("/")
 export class AppController {
+  @Get("/")
+  homePage(@Res() res: Response) {
+    res.sendFile(publicResource("index.html"));
+  }
+
   @Get("/login")
   loginPage(@Res() res: Response) {
     res.sendFile(publicResource("login.html"));

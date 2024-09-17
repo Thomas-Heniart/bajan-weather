@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Daily Weather | Authentication succeeded</title>
+    <title>Daily Weather</title>
     <link rel="icon" href="/assets/img/favicon.ico" type="image/x-icon">
     <style>
         body {
@@ -11,6 +11,7 @@
             padding: 0;
             margin: 0;
             background: #FAFAD2FF;
+            font-family: Helvetica, sans-serif;
         }
 
         #app {
@@ -41,7 +42,19 @@
         #welcome {
             font-size: 0.65em;
             font-weight: bold;
-            font-family: Helvetica, sans-serif;
+        }
+
+        #subtitle {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            padding-bottom: 15px;
+        }
+
+        h2 {
+            font-size: 1em;
+            font-weight: bold;
         }
     </style>
 </head>
@@ -49,8 +62,18 @@
 <div id="app">
     <h1>
         <img id="logo" src="/assets/img/daily-weather.png"  alt="Daily Weather Logo"/>
-        <span id="welcome">Authentication succeeded. A video will be posted on your account everyday</span>
+        <span id="welcome">Welcome to Daily Weather</span>
     </h1>
+    <div id="subtitle">
+        <h2>Generate daily weather videos for TikTok!</h2>
+        <video width="640" height="480" autoplay loop muted>
+            <source src="/assets/video/example.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+    </div>
+    <a href="/tiktok/oauth">
+        <img src="/assets/img/Button_Black.svg"  alt="Continue with TikTok"/>
+    </a>
 </div>
 </body>
 </html>
