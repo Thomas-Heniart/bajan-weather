@@ -12,8 +12,7 @@
   video.loop = true;
   video.muted = true;
   const source = document.createElement("source");
-  source.src =
-    "/assets/videos/example.mp4?v=" + startOfDay(new Date()).getTime();
+  source.src = "/assets/videos/today.mp4?v=" + startOfDay(new Date()).getTime();
   video.appendChild(source);
   document.getElementById("subtitle").appendChild(video);
 })();
