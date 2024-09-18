@@ -11,6 +11,7 @@ import { RemotionDailyWeatherVideoRepository } from "../secondaries/remotionDail
 import { InMemoryDailyWeatherGateway } from "../secondaries/inMemoryDailyWeatherGateway";
 import { WeatherModule } from "../../../../weather-context/adapters/primaries/nest/weather.module";
 import { BarbadosDailyWeatherCollectedEventSubscriber } from "./barbadosDailyWeatherCollectedEventSubscriber";
+import { VideoCreatedEventSubscriber } from "./videoCreatedEventSubscriber";
 
 @Module({
   imports: [WeatherModule],
@@ -58,6 +59,7 @@ import { BarbadosDailyWeatherCollectedEventSubscriber } from "./barbadosDailyWea
       ],
     },
     BarbadosDailyWeatherCollectedEventSubscriber,
+    VideoCreatedEventSubscriber,
   ],
 })
 export class VideoModule {}
