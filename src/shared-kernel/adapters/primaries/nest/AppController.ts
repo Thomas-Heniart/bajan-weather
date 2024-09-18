@@ -7,17 +7,23 @@ import * as process from "node:process";
 export class AppController {
   @Get("/")
   homePage(@Res() res: Response) {
-    res.sendFile(publicResource("index.html"));
+    res
+      .setHeader("Cache-Control", "public, max-age=43200")
+      .sendFile(publicResource("index.html"));
   }
 
   @Get("/login")
   loginPage(@Res() res: Response) {
-    res.sendFile(publicResource("login.html"));
+    res
+      .setHeader("Cache-Control", "public, max-age=43200")
+      .sendFile(publicResource("login.html"));
   }
 
   @Get("/tiktok/oauth-success")
   tiktokOauthSuccess(@Res() res: Response) {
-    res.sendFile(publicResource("oauth_succeeded.html"));
+    res
+      .setHeader("Cache-Control", "public, max-age=43200")
+      .sendFile(publicResource("oauth_succeeded.html"));
   }
 
   @Get("/tiktok/oauth")

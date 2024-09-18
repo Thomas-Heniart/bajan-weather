@@ -9,3 +9,5 @@ out
 # Ignore secrets
 secrets
 .terraform
+
+public/assets/videos/today.mp4
