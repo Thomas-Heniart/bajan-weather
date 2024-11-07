@@ -16,6 +16,7 @@
     "@remotion/zod-types": "4.0.210",
     "axios": "^1.7.7",
     "date-fns": "^4.1.0",
+    "dropbox-v2-api": "^2.5.11",
     "react": "^18.0.0",
     "react-dom": "^18.0.0",
     "remotion": "4.0.210",

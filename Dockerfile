@@ -1,4 +1,4 @@
-FROM node:20-bullseye
+FROM node:20-bookworm
 RUN apt update && apt-get install -y \
   libnss3 \
   libdbus-1-3 \

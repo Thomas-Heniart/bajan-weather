@@ -1,10 +1,13 @@
 import { bundle } from "@remotion/bundler";
 import { renderMedia, selectComposition } from "@remotion/renderer";
 import * as path from "path";
+import * as dropboxV2Api from "dropbox-v2-api";
 import { DailyWeatherVideoRepository } from "../../../business-logic/ports/dailyWeatherVideoRepository";
 import { BarbadosDailyWeatherVideo } from "../../../business-logic/models/barbadosDailyWeatherVideo";
 
 import { BarbadosDailyWeatherProps } from "../remotion/BarbadosWeatherMap/barbadosDailyWeatherProps";
+import * as process from "node:process";
+import { createReadStream } from "fs";
 
 export class RemotionDailyWeatherVideoRepository
   implements DailyWeatherVideoRepository
@@ -15,8 +18,6 @@ export class RemotionDailyWeatherVideoRepository
       entryPoint: path.resolve(
         "./src/video-context/adapters/primaries/remotion/studio.ts",
       ),
-      // If you have a webpack override in remotion.config.ts, pass it here as well.
-      webpackOverride: (config) => config,
     });
     const inputProps = this.remotionVideoProps(video);
     const composition = await selectComposition({
@@ -31,6 +32,9 @@ export class RemotionDailyWeatherVideoRepository
       outputLocation: video.getPath(),
       inputProps,
     });
+
+    await this.uploadToDropbox(video);
+
     console.log(`Video rendered at ${video.getPath()}`);
   }
 
@@ -40,5 +44,32 @@ export class RemotionDailyWeatherVideoRepository
     return {
       parishesWeather: video.toSnapshot().parishesWeather,
     };
+  }
+
+  private uploadToDropbox(video: BarbadosDailyWeatherVideo) {
+    return new Promise((resolve, reject) => {
+      const dropbox = dropboxV2Api.authenticate({
+        token: process.env.DROPBOX_API_KEY,
+      });
+      const parts = video.getPath().split("/");
+      const fileName = parts[parts.length - 1];
+      dropbox(
+        {
+          resource: "files/upload",
+          parameters: {
+            path: `/${fileName}`,
+          },
+          readStream: createReadStream(video.getPath()),
+        },
+        (err) => {
+          if (err) {
+            console.error(err);
+            reject(err);
+            return;
+          }
+          resolve(null);
+        },
+      );
+    });
   }
 }
