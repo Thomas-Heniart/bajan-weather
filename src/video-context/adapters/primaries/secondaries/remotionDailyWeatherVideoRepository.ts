@@ -33,7 +33,7 @@ export class RemotionDailyWeatherVideoRepository
       inputProps,
     });
 
-    await this.uploadToDropbox(video);
+    // await this.uploadToDropbox(video);
 
     console.log(`Video rendered at ${video.getPath()}`);
   }

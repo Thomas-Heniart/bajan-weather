@@ -6,3 +6,4 @@
 !remotion.config.ts
 !tsconfig.build.json
 !tsconfig.json
+!.env

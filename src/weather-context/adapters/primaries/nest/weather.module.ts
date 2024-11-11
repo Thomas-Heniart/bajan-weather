@@ -1,7 +1,6 @@
 import { Module, OnModuleInit } from "@nestjs/common";
 import { InMemoryDailyWeatherRepository } from "../../secondaries/inMemoryDailyWeatherRepository";
 import { CollectBarbadosParishDailyWeatherUseCase } from "../../../business-logic/use-cases/save-barbados-parish-daily-weather/collectBarbadosParishDailyWeatherUseCase";
-import { WeatherTasksService } from "./weatherTasksService";
 import { OpenWeatherApiWeatherGateway } from "../../secondaries/open-weather-api/openWeatherApiWeatherGateway";
 import * as process from "node:process";
 
@@ -25,15 +24,11 @@ import * as process from "node:process";
         ),
       inject: ["DailyWeatherRepository", "WeatherGateway"],
     },
-    WeatherTasksService,
   ],
   exports: ["DailyWeatherRepository"],
 })
 export class WeatherModule implements OnModuleInit {
-  constructor(private readonly cronTasks: WeatherTasksService) {}
+  constructor() {}
 
-  async onModuleInit(): Promise<void> {
-    if (process.env.COLLECT_WEATHER_ON_STARTUP === "1")
-      await this.cronTasks.collectBarbadosDailyWeather();
-  }
+  async onModuleInit(): Promise<void> {}
 }
