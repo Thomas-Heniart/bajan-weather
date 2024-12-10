@@ -37,6 +37,24 @@ npm run build
 npm run upgrade
 ```
 
+## Build
+
+```shell
+docker buildx build --platform=linux/amd64 -t gcr.io/daily-weather-435822/barbados-daily-weather:latest . --push
+
+gcloud run jobs create barbados-daily-weather --image gcr.io/daily-weather-435822/barbados-daily-weather --region us-east1 --memory 2Gi
+
+# This does not work yet
+gcloud scheduler jobs create http barbados-daily-weather-scheduler \
+  --schedule="0 6 * * *" \
+  --time-zone="America/Barbados" \
+  --location=us-east1 \
+  --uri="https://us-east1-run.googleapis.com/apis/run.googleapis.com/v1/namespaces/PROJECT_ID/jobs/barbados-daily-weather:run" \
+  --http-method=POST \
+  --oauth-service-account-email=daily-weather-435822@appspot.gserviceaccount.com
+  
+```
+
 ## Docs
 
 Get started with Remotion by reading the [fundamentals page](https://www.remotion.dev/docs/the-fundamentals).
@@ -56,3 +74,4 @@ Note that for some entities a company license is needed. [Read the terms here](h
 ## Useful resources
 
 - https://openweathermap.org/weather-conditions#Weather-Condition-Codes-2
+

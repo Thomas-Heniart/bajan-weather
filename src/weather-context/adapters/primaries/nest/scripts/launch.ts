@@ -46,10 +46,13 @@ const main = async () => {
       },
     }),
   );
-  setTimeout(() => {
-    console.log("Timeout: No video created");
-    process.exit(1);
-  }, 30000);
+  setTimeout(
+    () => {
+      console.log("Timeout: No video created");
+      process.exit(1);
+    },
+    1000 * 60 * 2,
+  );
 };
 
 main();

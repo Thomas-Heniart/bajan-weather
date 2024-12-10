@@ -12,6 +12,8 @@ import { InMemoryDailyWeatherGateway } from "../secondaries/inMemoryDailyWeather
 import { WeatherModule } from "../../../../weather-context/adapters/primaries/nest/weather.module";
 import { BarbadosDailyWeatherCollectedEventSubscriber } from "./barbadosDailyWeatherCollectedEventSubscriber";
 import { VideoCreatedEventSubscriber } from "./videoCreatedEventSubscriber";
+import * as process from "node:process";
+import { join } from "path";
 
 @Module({
   imports: [WeatherModule],
@@ -19,7 +21,9 @@ import { VideoCreatedEventSubscriber } from "./videoCreatedEventSubscriber";
     {
       provide: "DailyWeatherVideoRepository",
       useFactory: (): DailyWeatherVideoRepository =>
-        new RemotionDailyWeatherVideoRepository(),
+        new RemotionDailyWeatherVideoRepository(
+          join(process.cwd(), ".keys", "key.json"),
+        ),
     },
     {
       provide: "DailyWeatherGateway",

@@ -6,11 +6,14 @@ import { randomUUID } from "node:crypto";
 import { DomainEventPoller } from "../business-logic/events/domain-event-poller";
 import { DomainEventRepository } from "../business-logic/gateways/repositories/domainEventRepository";
 import { DomainEventPublisher } from "../business-logic/gateways/providers/domainEventPublisher";
+import { S3Client } from "@aws-sdk/client-s3";
+import * as process from "node:process";
 
 export const DOMAIN_EVENT_REPOSITORY_TOKEN = "DomainEventRepository";
 export const DATE_TIME_PROVIDER_TOKEN = "DateTimeProvider";
 export const DOMAIN_EVENT_PUBLISHER_TOKEN = "DomainEventPublisher";
 export const ID_PROVIDER_TOKEN = "IdProvider";
+export const S3_CLIENT_TOKEN = "S3Client";
 
 @Module({
   imports: [EventEmitterModule.forRoot()],
@@ -52,12 +55,24 @@ export const ID_PROVIDER_TOKEN = "IdProvider";
       },
       inject: [DOMAIN_EVENT_REPOSITORY_TOKEN, DOMAIN_EVENT_PUBLISHER_TOKEN],
     },
+    {
+      provide: S3_CLIENT_TOKEN,
+      useFactory: () =>
+        new S3Client({
+          region: process.env.AWS_DEFAULT_REGION!,
+          credentials: {
+            accessKeyId: process.env.AWS_ACCESS_KEY_ID!,
+            secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY!,
+          },
+        }),
+    },
   ],
   exports: [
     DOMAIN_EVENT_REPOSITORY_TOKEN,
     DATE_TIME_PROVIDER_TOKEN,
     DOMAIN_EVENT_PUBLISHER_TOKEN,
     ID_PROVIDER_TOKEN,
+    S3_CLIENT_TOKEN,
   ],
 })
 @Global()
